@@ -96,7 +96,7 @@ collections:
       - { label: Contenido, name: body, widget: markdown }
 
   - name: project-docs
-    label: '📘 Proyecto: Docs'
+    label: '📘 Herwingx Docs'
     folder: src/content/docs/proyectos/herwingx-docs
     create: true
     delete: true
