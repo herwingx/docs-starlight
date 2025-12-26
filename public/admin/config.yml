@@ -102,6 +102,7 @@ collections:
     delete: true
     nested:
       depth: 5
+    slug: '{{slug}}'
     extension: mdx
     format: frontmatter
     fields:
