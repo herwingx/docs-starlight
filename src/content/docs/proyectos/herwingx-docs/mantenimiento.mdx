@@ -108,7 +108,19 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 ## 🔄 Flujo de Trabajo Recomendado
 
 ### Para cambios rápidos (Typos, frases)
-👉 **Usa el CMS**: Inicia sesión en `/admin/`, edita y guarda. Se despliega solo.
+👉 **Usa el CMS**: Inicia sesión en `/admin/`. Las colecciones principales (Frontend, Backend, DevOps) y proyectos activos (Docs) ya están configurados.
+
+### 🆕 Registrar un Nuevo Proyecto en el CMS
+
+Si creas una carpeta nueva para otro proyecto (ej: `src/content/docs/proyectos/finanzas`), debes registrarla en `public/admin/config.yml` para verla en el panel:
+
+```yaml
+  - name: project-finanzas
+    label: '📗 Proyecto: Finanzas'
+    folder: src/content/docs/proyectos/finanzas
+    create: true
+    # ... copiar el resto de campos de otra colección
+```
 
 ### Para nuevas guías complejas
 👉 **Usa VS Code**:

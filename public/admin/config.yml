@@ -95,13 +95,11 @@ collections:
               - { label: Variante, name: variant, widget: select, options: [tip, note, caution, danger], required: false }
       - { label: Contenido, name: body, widget: markdown }
 
-  - name: proyectos
-    label: '💼 Proyectos (v2)'
-    folder: src/content/docs/proyectos
+  - name: project-docs
+    label: '📘 Proyecto: Docs'
+    folder: src/content/docs/proyectos/herwingx-docs
     create: true
     delete: true
-    nested:
-      depth: 5
     slug: '{{slug}}'
     extension: mdx
     format: frontmatter
