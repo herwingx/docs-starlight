@@ -70,12 +70,63 @@ sequenceDiagram
 - **Ubicación**: GitHub Settings > Developer Settings > OAuth Apps.
 - **Configuración clave**:
   - `Homepage URL`: `https://docs.herwingx.dev`
-  - `Callback URL`: `https://docs-oauth.herwingx.workers.dev/callback` (apunta al worker).
+  - `Callback URL`: `https://docs.herwingx.workers.dev/callback` (apunta al worker).
 
 #### 2. Cloudflare Worker (`docs-oauth`)
-Es un script serverless simple que actúa como "puente".
-- **Código**: Recibe el `code` del CMS y pide el token a GitHub.
-- **Secretos**: El `CLIENT_SECRET` de GitHub está almacenado aquí. **NUNCA** debe estar en el código del frontend.
+Es un script serverless que actúa como "puente". Maneja el intercambio de token y el `postMessage` específico que espera Sveltia CMS.
+
+<details>
+<summary>⚡ Ver código del Worker (worker.js)</summary>
+
+```javascript
+/* Cloudflare Worker para OAuth Github <-> CMS */
+const CLIENT_ID = 'Ov23liuRjoGP3vZ9KU9u'; // ID Público
+const CLIENT_SECRET = 'TU_SECRET_EN_WORKER'; // Configurar en Cloudflare
+
+export default {
+  async fetch(req) {
+    const url = new URL(req.url);
+
+    // 1. Redirección inicial
+    if (url.pathname === '/auth') {
+      return Response.redirect(
+        `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=repo,user`,
+        302
+      );
+    }
+
+    // 2. Callback y Handshake con CMS
+    if (url.pathname === '/callback') {
+      const code = url.searchParams.get('code');
+      try {
+        const resp = await fetch('https://github.com/login/oauth/access_token', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json', 'accept': 'application/json' },
+          body: JSON.stringify({ client_id: CLIENT_ID, client_secret: CLIENT_SECRET, code })
+        });
+        const result = await resp.json();
+        
+        if (result.error) return new Response(JSON.stringify(result), { status: 400 });
+
+        // Mensaje formateado para Sveltia/Decap
+        const msg = `authorization:github:success:${JSON.stringify({
+          token: result.access_token, provider: 'github'
+        })}`;
+
+        return new Response(
+          `<script>
+            window.opener.postMessage("${msg}", "*");
+            setTimeout(() => window.close(), 800);
+          </script>`, 
+          { headers: { 'content-type': 'text/html;charset=UTF-8' } }
+        );
+      } catch (e) { return new Response(e.message, { status: 500 }); }
+    }
+    return new Response('Worker Ready', { status: 200 });
+  }
+}
+```
+</details>
 
 ---
 
