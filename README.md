@@ -1,49 +1,118 @@
-# Starlight Starter Kit: Basics
+# 📚 Herwingx Docs
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+Documentación personal de desarrollo con [Astro Starlight](https://starlight.astro.build/).
 
-```
-npm create astro@latest -- --template starlight
-```
+[![Deploy](https://img.shields.io/badge/🌐-docs.herwingx.dev-blue)](https://docs.herwingx.dev)
+[![GitHub Pages](https://img.shields.io/badge/Hosted-GitHub%20Pages-181717?logo=github)](https://pages.github.com/)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## 🚀 Inicio Rápido
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+```bash
+git clone https://github.com/herwingx/docs-starlight.git
+cd docs-starlight
+npm install
+npm run dev
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+**URLs locales:**
+- 📖 Docs: `http://localhost:4321`
+- 🎛️ Admin: `http://localhost:4321/admin/`
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+---
 
-Static assets, like favicons, can be placed in the `public/` directory.
+## 📝 Crear Contenido
 
-## 🧞 Commands
+### Opción 1: Panel Admin (CMS)
+1. Ve a `https://docs.herwingx.dev/admin/`
+2. Login con GitHub
+3. Crea/edita páginas visualmente
+4. Los cambios se commitean automáticamente
 
-All commands are run from the root of the project, from a terminal:
+### Opción 2: Archivos MDX
+```bash
+# Crear nueva página
+touch src/content/docs/frontend/mi-guia.mdx
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```mdx
+---
+title: Mi Guía
+description: Descripción para SEO
+---
 
-## 👀 Want to learn more?
+# Contenido aquí
+```
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+---
+
+## 📦 Comandos
+
+| Comando           | Descripción         |
+| :---------------- | :------------------ |
+| `npm run dev`     | Servidor desarrollo |
+| `npm run build`   | Build producción    |
+| `npm run preview` | Preview del build   |
+
+---
+
+## 🚀 Deploy (GitHub Pages)
+
+### Configuración Inicial (una vez)
+
+1. **Crear repositorio en GitHub:**
+   ```bash
+   gh repo create docs-starlight --public --source=. --push
+   ```
+
+2. **Habilitar GitHub Pages:**
+   - Ve a `Settings > Pages`
+   - Source: **GitHub Actions**
+
+3. **Configurar dominio en Cloudflare:**
+   - Tipo: `CNAME`
+   - Name: `docs`
+   - Target: `herwingx.github.io`
+
+4. **Primer deploy:**
+   ```bash
+   git push origin main
+   ```
+
+### Deploy Automático
+Cada push a `main` despliega automáticamente via GitHub Actions.
+
+---
+
+## 📱 PWA (Progressive Web App)
+
+El sitio es instalable como app:
+
+**En móvil:**
+- Visita `docs.herwingx.dev`
+- Menú → "Añadir a pantalla de inicio"
+
+**En desktop:**
+- Chrome/Edge muestran botón de instalación
+
+---
+
+## 🎛️ CMS (Sveltia CMS)
+
+- **URL:** `https://docs.herwingx.dev/admin/`
+- **Backend:** GitHub (OAuth)
+- Los cambios se commitean al repo y despliegan automáticamente
+
+---
+
+## 🛠️ Tecnologías
+
+- Astro 5.x + Starlight 0.37
+- Sveltia CMS
+- GitHub Pages
+- PWA ready
+
+---
+
+MIT © [herwingx](https://github.com/herwingx)

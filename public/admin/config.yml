@@ -1,0 +1,106 @@
+# Backend: GitHub para producción, test-repo para desarrollo
+backend:
+  name: github
+  repo: herwingx/docs-starlight
+  branch: main
+
+locale: es
+
+media_folder: src/assets/images
+public_folder: /src/assets/images
+
+collections:
+  - name: frontend
+    label: '🎨 Frontend'
+    folder: src/content/docs/frontend
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    extension: mdx
+    format: frontmatter
+    fields:
+      - { label: Título, name: title, widget: string, required: true }
+      - { label: Descripción, name: description, widget: string, required: true }
+      - label: Sidebar
+        name: sidebar
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - { label: Orden, name: order, widget: number, required: false }
+          - label: Badge
+            name: badge
+            widget: object
+            collapsed: true
+            required: false
+            fields:
+              - { label: Texto, name: text, widget: string, required: false }
+              - { label: Variante, name: variant, widget: select, options: [tip, note, caution, danger], required: false }
+      - { label: Contenido, name: body, widget: markdown }
+
+  - name: backend
+    label: '⚙️ Backend'
+    folder: src/content/docs/backend
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    extension: mdx
+    format: frontmatter
+    fields:
+      - { label: Título, name: title, widget: string, required: true }
+      - { label: Descripción, name: description, widget: string, required: true }
+      - label: Sidebar
+        name: sidebar
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - { label: Orden, name: order, widget: number, required: false }
+          - label: Badge
+            name: badge
+            widget: object
+            collapsed: true
+            required: false
+            fields:
+              - { label: Texto, name: text, widget: string, required: false }
+              - { label: Variante, name: variant, widget: select, options: [tip, note, caution, danger], required: false }
+      - { label: Contenido, name: body, widget: markdown }
+
+  - name: devops
+    label: '🚀 DevOps'
+    folder: src/content/docs/devops
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    extension: mdx
+    format: frontmatter
+    fields:
+      - { label: Título, name: title, widget: string, required: true }
+      - { label: Descripción, name: description, widget: string, required: true }
+      - label: Sidebar
+        name: sidebar
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - { label: Orden, name: order, widget: number, required: false }
+          - label: Badge
+            name: badge
+            widget: object
+            collapsed: true
+            required: false
+            fields:
+              - { label: Texto, name: text, widget: string, required: false }
+              - { label: Variante, name: variant, widget: select, options: [tip, note, caution, danger], required: false }
+      - { label: Contenido, name: body, widget: markdown }
+
+  - name: config
+    label: '⚙️ Configuración'
+    files:
+      - label: Página Principal
+        name: home
+        file: src/content/docs/index.mdx
+        fields:
+          - { label: Título, name: title, widget: string }
+          - { label: Descripción, name: description, widget: string }
+          - { label: Contenido, name: body, widget: markdown }

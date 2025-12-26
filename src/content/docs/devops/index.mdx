@@ -1,0 +1,53 @@
+---
+title: DevOps
+description: CI/CD, contenedores, infraestructura y automatización
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+# 🚀 DevOps
+
+Bienvenido a la sección de **DevOps**. Aquí documento todo sobre automatización, infraestructura, contenedores y despliegues.
+
+## 📚 Categorías
+
+<CardGrid>
+  <LinkCard
+    title="GitHub Actions"
+    description="Workflows, CI/CD y automatización"
+    href="/devops/github-actions/"
+  />
+  <LinkCard
+    title="Docker"
+    description="Contenedores, imágenes y Docker Compose"
+    href="/devops/docker/"
+  />
+  <LinkCard
+    title="Cloudflare"
+    description="Tunnels, Workers y configuración DNS"
+    href="/devops/cloudflare/"
+  />
+  <LinkCard
+    title="Home Lab"
+    description="Servidores caseros y auto-hosting"
+    href="/devops/homelab/"
+  />
+</CardGrid>
+
+## 🔧 Herramientas Principales
+
+Las herramientas que más uso y documento:
+
+| Herramienta | Uso Principal |
+|:------------|:--------------|
+| **GitHub Actions** | CI/CD y automatización |
+| **Docker** | Contenedorización |
+| **Cloudflare Tunnels** | Exposición segura de servicios |
+| **Nginx** | Reverse proxy |
+| **Portainer** | Gestión de contenedores |
+
+---
+
+:::caution[Importante]
+Las configuraciones de seguridad (secrets, tokens, etc.) **nunca** se incluyen en la documentación pública. Usa variables de entorno y secrets de GitHub.
+:::
