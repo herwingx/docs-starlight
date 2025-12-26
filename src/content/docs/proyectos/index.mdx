@@ -1,6 +1,6 @@
 ---
 title: Portafolio de Proyectos
-description: Índice de todos los proyectos documentados.
+description: Índice centralizado de proyectos personales y profesionales.
 sidebar:
   order: 0
   badge:
@@ -8,8 +8,36 @@ sidebar:
     variant: note
 ---
 
-Aquí encontrarás la documentación detallada de mis proyectos personales y profesionales.
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
-## 📂 Proyectos Activos
+Bienvenido a la colección de proyectos documentados. Aquí encontrarás detalles técnicos, arquitecturas y guías de mantenimiento.
 
-- **[Herwingx Docs](./herwingx-docs/)**: Documentación de este mismo sitio (Arquitectura y Mantenimiento).
+## 🚀 Proyectos Activos
+
+<CardGrid>
+  <LinkCard
+    title="📘 Herwingx Docs"
+    description="Documentación de este mismo sitio. Arquitectura serverless, CI/CD con GitHub Actions y CMS."
+    href="./herwingx-docs/"
+    icon="open-book"
+  />
+  
+  {/* Espacio para futuros proyectos */}
+  {/* 
+  <LinkCard
+    title="📗 Finanzas Personales"
+    description="Sistema de gestión financiera con Next.js y Supabase."
+    href="./finanzas/"
+    icon="chart-bar"
+  /> 
+  */}
+</CardGrid>
+
+## 💡 Ideas / Laboratorio
+
+:::note[En Construcción]
+Próximamente añadiré aquí pequeños experimentos y pruebas de concepto.
+:::
+
+- **Laboratorio de UI**: Componentes React experimentales.
+- **Scripts**: Automatizaciones en Python y Bash.

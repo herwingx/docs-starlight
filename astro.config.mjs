@@ -59,10 +59,11 @@ export default defineConfig({
 					collapsed: false,
 					autogenerate: { directory: 'devops' },
 				},
+				// Proyectos Específicos (Nivel Raíz)
 				{
-					label: '💼 Proyectos',
+					label: '📘 Herwingx Docs',
 					collapsed: false,
-					autogenerate: { directory: 'proyectos' },
+					autogenerate: { directory: 'proyectos/herwingx-docs' },
 				},
 			],
 			// Head personalizado para PWA y SEO

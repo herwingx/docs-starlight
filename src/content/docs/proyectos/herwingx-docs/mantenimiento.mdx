@@ -110,17 +110,36 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 ### Para cambios rápidos (Typos, frases)
 👉 **Usa el CMS**: Inicia sesión en `/admin/`. Las colecciones principales (Frontend, Backend, DevOps) y proyectos activos (Docs) ya están configurados.
 
-### 🆕 Registrar un Nuevo Proyecto en el CMS
+### 🆕 Registrar un Nuevo Proyecto
 
-Si creas una carpeta nueva para otro proyecto (ej: `src/content/docs/proyectos/finanzas`), debes registrarla en `public/admin/config.yml` para verla en el panel:
+Para añadir un nuevo proyecto (ej: Finanzas) y que aparezca en el menú principal:
 
-```yaml
-  - name: project-finanzas
-    label: '📗 Proyecto: Finanzas'
-    folder: src/content/docs/proyectos/finanzas
-    create: true
-    # ... copiar el resto de campos de otra colección
-```
+1. **Crear Carpetas**:
+   `src/content/docs/proyectos/finanzas/`
+
+2. **Configurar Sidebar (`astro.config.mjs`)**:
+   Añade una entrada para que salga en el menú izquierdo:
+   ```javascript
+   {
+       label: '📗 Finanzas',
+       autogenerate: { directory: 'proyectos/finanzas' },
+   },
+   ```
+
+3. **Configurar CMS (`config.yml`)**:
+   Registra la colección para poder editarla visualmente:
+   ```yaml
+     - name: project-finanzas
+       label: '📗 Proyecto: Finanzas'
+       folder: src/content/docs/proyectos/finanzas
+       create: true
+       slug: '{{slug}}'
+       extension: mdx
+       format: frontmatter
+       fields: 
+         - { label: Título, name: title, widget: string }
+         # ... (copiar campos de otra colección)
+   ```
 
 ### Para nuevas guías complejas
 👉 **Usa VS Code**:
